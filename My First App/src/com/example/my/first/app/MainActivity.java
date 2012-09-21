@@ -51,7 +51,7 @@ public class MainActivity extends Activity {
     	if(isIntentSafe) {
     		startActivity(mapIntent);
     	}
-    	
+    	//cos
 //    	/**
 //    	 * uruchomienie domyślnej akcji dla przycisku 
 //    	 */
