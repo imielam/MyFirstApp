@@ -12,5 +12,7 @@
     <string name="edit_bar_message">Enter internet address</string>
     <string name="button_HTTP">Open browser</string>
     <string name="button_photo">Take a picture</string>
+    <string name="title_activity_photo">PhotoActivity</string>
+    <string name="album_name">Camera Sample</string>
 
 </resources>

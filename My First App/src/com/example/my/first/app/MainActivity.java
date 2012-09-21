@@ -1,5 +1,9 @@
 package com.example.my.first.app;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import android.app.Activity;
@@ -15,6 +19,8 @@ import android.widget.EditText;
 
 public class MainActivity extends Activity {
 	public final static String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
+	static final int PHOTO_REQUEST = 1;
+	public final static String EXTRA_THUMB_PHOTO = "com.example.myfirstapp.EXTRA_THUMB_PHOTO";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -58,7 +64,10 @@ public class MainActivity extends Activity {
 			startActivity(mapIntent);
 		}
 	}
-
+	/**
+	 * Method that take a picture
+	 * @param view
+	 */
 	public void takePicture(View view) {
 
 //		/**
@@ -68,7 +77,7 @@ public class MainActivity extends Activity {
 //		startActivity(intent);
 		
 		Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-		startActivityForResult(takePictureIntent, -1);
+		startActivityForResult(takePictureIntent, PHOTO_REQUEST);
 
 		// /**
 		// * uruchomienie domyślnej akcji dla przycisku
@@ -88,4 +97,21 @@ public class MainActivity extends Activity {
 		// intent.putExtra(EXTRA_MESSAGE, message);
 		// startActivity(intent);
 	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == PHOTO_REQUEST) {
+			if (resultCode == RESULT_OK){
+				/*
+				 * Method that present picture just taken
+				 */
+				Intent intent = new Intent(this, PhotoActivity.class);
+				intent.putExtra(EXTRA_THUMB_PHOTO, data.getExtras());
+				startActivity(intent);
+				
+				
+			}
+		}
+	}
+	
 }
