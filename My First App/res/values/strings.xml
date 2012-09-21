@@ -11,5 +11,6 @@
     <string name="content_list">Content List</string>
     <string name="edit_bar_message">Enter internet address</string>
     <string name="button_HTTP">Open browser</string>
+    <string name="button_photo">Take a picture</string>
 
 </resources>
