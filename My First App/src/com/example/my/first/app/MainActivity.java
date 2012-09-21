@@ -114,4 +114,9 @@ public class MainActivity extends Activity {
 		}
 	}
 	
+	public void runOpenGL(View view) {
+		Intent intent = new Intent(this, OpenGLESActivity.class);
+		startActivity(intent);
+	}
+	
 }

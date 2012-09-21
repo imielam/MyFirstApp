@@ -15,5 +15,6 @@
     <string name="title_activity_photo">PhotoActivity</string>
     <string name="album_name">Camera Sample</string>
     <string name="title_activity_open_gles">OpenGLESActivity</string>
+    <string name="run_openGL">Run OpenGL application</string>
 
 </resources>
