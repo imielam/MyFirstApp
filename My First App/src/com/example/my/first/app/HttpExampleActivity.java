@@ -16,11 +16,13 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.TextView;
 
 public class HttpExampleActivity extends Activity {
 	private static final String DEBUG_TAG = "HttpExample";
+	private WebView webView;
 	private EditText urlText;
 	private TextView textView;
 
@@ -30,17 +32,21 @@ public class HttpExampleActivity extends Activity {
         setContentView(R.layout.activity_http_example);
         urlText = (EditText) findViewById(R.id.myUrl);
         textView = (TextView) findViewById(R.id.myText);
+        webView = (WebView) findViewById(R.id.myWeb);
     }
 
     public void downloadData(View view) {
     	String stringUrl ="http://www." + urlText.getText().toString();
-    	ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-    	NetworkInfo networkInfo  = connMgr.getActiveNetworkInfo();
-    	if (networkInfo != null && networkInfo.isConnected()) {
-    		new DownloadWebpageText().execute(stringUrl);
-    	} else {
-    		textView.setText("No network connected available.");
-    	}
+    	webView.loadUrl(stringUrl);
+    	
+    	
+//    	ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+//    	NetworkInfo networkInfo  = connMgr.getActiveNetworkInfo();
+//    	if (networkInfo != null && networkInfo.isConnected()) {
+//    		new DownloadWebpageText().execute(stringUrl);
+//    	} else {
+//    		textView.setText("No network connected available.");
+//    	}
     }
     
     private class DownloadWebpageText extends AsyncTask {
