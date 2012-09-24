@@ -44,7 +44,7 @@ public class MyRenderer implements GLSurfaceView.Renderer {
 		
 		long time = SystemClock.uptimeMillis() % 4000L;
 		float angle = 0.090f * ((int) time);
-		Matrix.setRotateM(mRotationMatrix, 0, angle, 0, 0, -1.0f);
+		Matrix.setRotateM(mRotationMatrix, 0, mAngle, 0, 0, -1.0f);
 		Matrix.multiplyMM(mMVPMatrix, 0, mRotationMatrix, 0, mMVPMatrix, 0);
 		
 		
