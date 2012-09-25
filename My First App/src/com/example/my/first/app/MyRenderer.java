@@ -24,6 +24,8 @@ public class MyRenderer implements GLSurfaceView.Renderer {
     private final float[] mRotationMatrix = new float[16];
     
     public volatile float mAngle;
+    public volatile float mX = 0.0f;
+    public volatile float mY = 0.0f;
 
 	public static int loadShader(int type, String shaderCode) {
 		int shader = GLES20.glCreateShader(type);
@@ -44,8 +46,11 @@ public class MyRenderer implements GLSurfaceView.Renderer {
 		
 		long time = SystemClock.uptimeMillis() % 4000L;
 		float angle = 0.090f * ((int) time);
-		Matrix.setRotateM(mRotationMatrix, 0, mAngle, 0, 0, -1.0f);
+//		Matrix.setRotateM(mRotationMatrix, 0, angle, 0, 0, -1.0f);
+		Matrix.translateM(mRotationMatrix, 0, mX, mY, 0);
+		System.out.println(mX + " " + mY);
 		Matrix.multiplyMM(mMVPMatrix, 0, mRotationMatrix, 0, mMVPMatrix, 0);
+		
 		
 		
 		mTriangle.draw(mMVPMatrix);
