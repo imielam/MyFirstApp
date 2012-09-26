@@ -25,7 +25,7 @@ public class MainActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_rotate);
 	}
 
 	@Override
@@ -115,8 +115,21 @@ public class MainActivity extends Activity {
 	}
 	
 	public void runOpenGL(View view) {
-		Intent intent = new Intent(this, OpenGLESActivity.class);
+		Intent intent = new Intent(this, RotateActivity.class);
+		EditText editText = (EditText) findViewById(R.id.editText1);
+		String message = editText.getText().toString();
+		intent.putExtra("startPoint", message);
+		editText = (EditText) findViewById(R.id.editText2);
+		message = editText.getText().toString();
+		intent.putExtra("endPoint", message);
+		editText = (EditText) findViewById(R.id.editText3);
+		message = editText.getText().toString();
+		intent.putExtra("currentPosition", message);
 		startActivity(intent);
 	}
+//	public void runOpenGL(View view) {
+//		Intent intent = new Intent(this, OpenGLESActivity.class);
+//		startActivity(intent);
+//	}
 	
 }
